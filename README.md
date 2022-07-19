@@ -22,7 +22,7 @@ report error and failed with saying something like "the drives are not formated 
 I have tried different sub versions of 3.10.0-1160 kernels, Lustre patched kernel,  even downgraded the rpm/rpm-build packages, with the same error.
 
 
-I finnaly decide to go with DKMS modules for all the ZFS/SPL, and Lustre, which turned out working fine(I actually worked firstly on DKMS successfuly, and then I wanted to try KMOD bu oly failed).
+I finnaly decide to go with DKMS modules for all the ZFS/SPL, and Lustre, which turned out working fine(I actually worked firstly on DKMS successfuly, and then I wanted to try KMOD but did not work).
 
 1. Download the rpms from https://downloads.whamcloud.com/public/lustre/lustre-2.12.8/el7.9.2009/server/RPMS/x86_64/
 
