@@ -16,7 +16,7 @@ Error: Package: kmod-lustre-osd-zfs-2.12.8_6_g5457c37-1.el7.x86_64 (/kmod-lustre
 ```
 
 By using "rpm -ivh --nodeps" can 
-force the compiled kmod rpms to install, and then the mkfs.lustre works fine with the ZFS pools look OK. But then when trying to mount the pools, it with 
+force the compiled kmod rpms to install, and then the mkfs.lustre works fine with the ZFS pools look OK. But then when trying to mount the pools, it will 
 report error and failed with saying something like "the drives are not formated by mkfs.lustre, or the backend filesystem is not supported".
 
 I finnaly decide to go with DKMS modules for all the ZFS/SPL, and Lustre, which turned out working fine.
