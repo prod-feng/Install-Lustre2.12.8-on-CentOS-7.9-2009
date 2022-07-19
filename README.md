@@ -4,7 +4,18 @@
 I tried to compile and install Lustre 2.12.8 on the CentOS 7.9, with success and also failures.
 
 It seems the the KMOD compiling on the CentOS 7.9 has alot of issue on the kmod-lustre-osd-zfs. The compiling for  "make rpms" can be fine with 
-some changes to the scripts, while it still comes with a lot of kernel ksym errors when install using yum install. By using "rpm -ivh --nodeps" can 
+some changes to the scripts, while it still comes with a lot of kernel ksym errors when install using yum install. 
+
+```text
+Error: Package: kmod-lustre-osd-zfs-2.12.8_6_g5457c37-1.el7.x86_64 (/kmod-lustre-osd-zfs-2.12.8_6_g5457c37-1.el7.x86_64)
+           Requires: ksym(dmu_tx_hold_sa) = 0x81757757
+Error: Package: kmod-lustre-osd-zfs-2.12.8_6_g5457c37-1.el7.x86_64 (/kmod-lustre-osd-zfs-2.12.8_6_g5457c37-1.el7.x86_64)
+           Requires: ksym(dmu_object_free) = 0x0b33c89f
+Error: Package: kmod-lustre-osd-zfs-2.12.8_6_g5457c37-1.el7.x86_64 (/kmod-lustre-osd-zfs-2.12.8_6_g5457c37-1.el7.x86_64)
+
+```
+
+By using "rpm -ivh --nodeps" can 
 force the compiled kmod rpms to install, and then the mkfs.lustre works fine with the ZFS pools look OK. But then when trying to mount the pools, it with 
 report error and failed with saying something like "the drives are not formated by mkfs.lustre, or the backend filesystem is not supported".
 
