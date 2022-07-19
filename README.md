@@ -19,6 +19,9 @@ By using "rpm -ivh --nodeps" can
 force the compiled kmod rpms to install, and then the mkfs.lustre works fine with the ZFS pools look OK. But then when trying to mount the pools, it will 
 report error and failed with saying something like "the drives are not formated by mkfs.lustre, or the backend filesystem is not supported".
 
+I have tried different sub versions of 3.10.0-1160 kernels, even downgraded the rpm/rpm-build packages, with the same error.
+
+
 I finnaly decide to go with DKMS modules for all the ZFS/SPL, and Lustre, which turned out working fine.
 
 1. Download the rpms from https://downloads.whamcloud.com/public/lustre/lustre-2.12.8/el7.9.2009/server/RPMS/x86_64/
