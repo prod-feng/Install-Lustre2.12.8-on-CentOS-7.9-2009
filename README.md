@@ -166,5 +166,14 @@ mount.lustre 192.168.0.1@tcp:/mylustre /lustre_store
  For he server side, it seems to me that only the osd-zfs module(and maybe some related modules) needed.
  
  
+ ```text
+ df -h
+Filesystem                   Size  Used Avail Use% Mounted on
+devtmpfs                      24G     0   24G   0% /dev
+...
+zfspool/mds                  4.8G  3.2M  4.8G   1% /mnt/lustre/mylustre-mdt
+zfspoolost/ost               4.8G  3.0M  4.8G   1% /mnt/lustre/mylustre-ost
+192.168.0.1@tcp:/mylustre    4.8G  3.0M  4.8G   1% /lustre_store
  
+ ```
  
