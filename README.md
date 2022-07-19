@@ -30,7 +30,7 @@ yum localinstall zfs*.rpm lib*rpm
 The above installation work smoothly. You can run "dkms status" to check.
 
 One issue here is that it will report that the feature of "REMAKE_INITRD" is deprecated. To avoid this and also let the following Lustre installation 
-work fine, I need to comment one line on each of the "dkms.cof" file or ZFS and SPL.
+work fine, I need to comment one line on each of the "dkms.cof" file of ZFS and SPL.
 ```text
 vi /usr/src/spl-0.7.13/dkms.conf
 
