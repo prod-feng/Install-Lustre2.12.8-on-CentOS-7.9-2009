@@ -55,14 +55,14 @@ zfs/0.7.13, 3.10.0-1160.71.1.el7.x86_64, x86_64: installed (original_module exis
 ```
 
 3. Now install the Lustre
-
+```text
 yum localinstall lustre*.rpm
  ```
  
  The installaton may looks fine, wile it reports error for compiling the Lustre modules. The DKMS source and the Lustre utilities have 
- actually installed, but the modules are not compiled and installed sucessfully. Run "modprob lustre" will simply reporting eror.
+ actually been installed, but the modules are not compiled and installed sucessfully. Run "modprob lustre" will simply reporting eror.
  
- The issue looks like is caused by a) the configure scipt can not properly find the ZFS source; b> the dkms has changed it's way to show the modules' status.
+ The issue looks like is caused by a) the configure scipt can not properly find the ZFS source; b) the "dkms" has changed it's way to show the modules' status.
  ```text
  OLD:
  dkms status
@@ -76,7 +76,7 @@ spl/0.7.13, 3.10.0-1160.71.1.el7.x86_64, x86_64: installed
  ```
  The change of "," to "/" of showing the modules' names causes this trouble here.
  
- There are 3 changed on 3 files need to be able to build and install the DKMS modules sucessfully:
+ There are 3 changes on 3 files needed to be able to build and install the DKMS modules sucessfully:
  ```text
  a)
  vi /usr/src/lustre-zfs-2.12.8_6_g5457c37/dkms.conf
@@ -119,7 +119,7 @@ ZFS_VERSION=$(dkms status -m zfs -k $3 -a $5 | awk -F', ' '{print $1; exit 0}' |
  
  dkms build lustre-zfs/2.12.8_6_g5457c37
  
- dkms install lustre-zfs/2.12.8_6_g5457c37\
+ dkms install lustre-zfs/2.12.8_6_g5457c37
  
  modprob lustre
  
@@ -127,7 +127,7 @@ ZFS_VERSION=$(dkms status -m zfs -k $3 -a $5 | awk -F', ' '{print $1; exit 0}' |
  
  Once it's done, it should fine.
  
- 4. Test on configure Lustre storage.
+ 4. Test on configuring Lustre storage.
  
  ```text
  
@@ -138,11 +138,11 @@ losetup -o 1048576 /dev/loop21 /opt/hd21.img;losetup -o 1048576 /dev/loop22 /opt
 mkfs.lustre --reformat --mdt --mgs --backfstype=zfs --fsname=mylustre --mgsnode=192.168.0.1 --index=0 zfspool/mds /dev/loop21
 mkfs.lustre --reformat --ost --backfstype=zfs --fsname=mylustre --mgsnode=192.168.0.1 --index=1 zfspoolost/ost /dev/loop22
  
-mkdir -p /mnt/lustre/mylustre-mdt0
-mkdir -p /mnt/lustre/mylustre-ost0
+mkdir -p /mnt/lustre/mylustre-mdt
+mkdir -p /mnt/lustre/mylustre-ost
 
-mount -t lustre zfspool/mds /mnt/lustre/mylustre-mdt0/
-mount -t lustre zfspoolost/ost /mnt/lustre/mylustre-ost0/
+mount -t lustre zfspool/mds /mnt/lustre/mylustre-mdt/
+mount -t lustre zfspoolost/ost /mnt/lustre/mylustre-ost/
 
 mount.lustre 192.168.0.1@tcp:/mylustre /lustre_store
  ```
