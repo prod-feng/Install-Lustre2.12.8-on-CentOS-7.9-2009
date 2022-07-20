@@ -163,7 +163,7 @@ mount.lustre 192.168.0.1@tcp:/mylustre /lustre_store
  
  Since the dkms Lustre modules also include the client's module, so we can directly mount the newly set Lustre storage. 
  
- For he server side, it seems to me that only the osd-zfs module(and maybe some related modules) needed.
+ For the server side, it seems to me that only the osd-zfs module(and maybe some related modules) is needed.
  
  
  ```text
