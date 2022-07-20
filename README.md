@@ -73,7 +73,7 @@ zfs/0.7.13, 3.10.0-1160.71.1.el7.x86_64, x86_64: installed (original_module exis
 yum localinstall lustre*.rpm
  ```
  
- The installaton may looks fine, wile it reports error for compiling the Lustre modules. The DKMS source and the Lustre utilities have 
+ The installaton may look finished fine, while it reports error for compiling the Lustre modules. The DKMS source and the Lustre utilities have 
  actually been installed, but the modules are not compiled and installed sucessfully. Run "modprob lustre" will simply reporting eror.
  
  The issue looks like is caused by a) the configure scipt can not properly find the ZFS source; b) the "dkms" has changed it's way to show the modules' status.
