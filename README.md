@@ -44,7 +44,7 @@ yum localinstall zfs*.rpm lib*rpm
 The above installation work smoothly. You can run "dkms status" to check.
 
 One issue here is that it will report that the feature of "REMAKE_INITRD" is deprecated. To avoid this and also let the following Lustre installation 
-work fine, I need to comment one line on each of the "dkms.cof" file of ZFS and SPL.
+work fine, I need to comment one line in each of the "dkms.conf" file of ZFS and SPL.
 ```text
 vi /usr/src/spl-0.7.13/dkms.conf
 
@@ -73,10 +73,10 @@ zfs/0.7.13, 3.10.0-1160.71.1.el7.x86_64, x86_64: installed (original_module exis
 yum localinstall lustre*.rpm
  ```
  
- The installaton may look finished fine, while it reports error for compiling the Lustre modules. The DKMS source and the Lustre utilities have 
- actually been installed, but the modules are not compiled and installed sucessfully. Run "modprob lustre" will simply reporting eror.
+ The installaton may look finished, while it reports error for compiling the Lustre module. The DKMS source and the Lustre utilities have 
+ actually been installed, but the module files are not compiled and installed sucessfully. Run "modprob lustre" will simply reporting eror.
  
- The issue looks like is caused by a) the configure scipt can not properly find the ZFS source; b) the "dkms" has changed it's way to show the modules' status.
+ The issue is caused by a) the configure scipt can not properly find the ZFS source; b) the "dkms" has changed it's way to show the modules' status.
  ```text
  OLD:
  dkms status
